@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    </style>
+    <script>
+        var testFunc = function(params){
+            this.a  =3;
+            var num1 = parseInt(params["num1"]);
+            var num2 = parseInt(params["num2"]);
+            //var opObj = params["opObj"];
+            var opObj = params.obObj;
+
+            this.printSome = function(num1, num2){                
+                // result.value = num1 + num2 
+            }
+            this.add = function(){              
+                return num1+num2;
+            }
+            this.minus = function(){
+                return  num1 - num2;
+            }
+            this.multiple = function(){
+                return  num1 * num2;
+            }
+            this.division = function(){
+                return  num1 / num2;
+            }
+
+            this.cal = function(){
+                if(opObj.value == ""){
+                    alert("연산자를 선택해 주세요")
+                    return;
+                }else if( opObj.value =="+"){
+                    return this.add();
+                }else if( opObj.value =="-"){
+                    return this.minus();
+                }else if( opObj.value =="*"){
+                    return this.multiple();
+                }else if( opObj.value =="/"){
+                    return this.division();
+                }              
+            }
+        } 
+
+        function f1(){             
+            var numObj1  = document.getElementById("num1"); 
+            var numObj2  = document.getElementById("num2");
+            var opObj = document.getElementById("op")
+            var params ={};
+            params["num1"] = numObj1.vaule;
+            params["num2"] = numObj1.vaule;
+            params["opObj"] = opObj;
+
+
+            var tf = new testFunc( params );     
+            var resultObj =  document.getElementById("result") ;           
+            resultObj.value = tf.cal()
+        }    
+        var a =10 ;
+        var b = "5";
+        // alert(a+parseInt(b));
+
+
+    
+    </script>
+</head>
+<body>
+    
+</body>
+   <label for="num1">숫자1:</label>    <input type="text" id="num1">
+   <select id="op">
+      <option value="">선택</option>
+      <option value="+">더하기</option>
+      <option value="-">빼기</option>
+      <option value="*">나누기</option>
+      <option value="/">곱하기</option>
+   </select>
+   
+   
+    + <label for="num2">숫자2:</label>    <input type="text" id="num2">
+
+   <input type="button" name="" id="btn1" value="계산"  onclick="f1()">
+   <input type="text" id="result">
+   </html>
