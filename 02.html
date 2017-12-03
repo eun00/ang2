@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> 클로저 </title>
+    <script>
+    var testFunc = function(){
+        this.a = 3;
+        this.b  = 4;
+        var b  = 10;
+        this.printSome =function(some){
+            console.log(some); 
+            console.log(this.a);
+            console.log(this.b);
+            alert(some); //함수안에 함수가 들어가면 클로저라고함
+            alert(b);
+        }
+    }  
+
+    function f1(){
+        var tf  = new testFunc(); 
+        tf.printSome("hihihi"); 
+    }
+
+    </script>
+</head>
+<body>
+    <input type="button" value="테스트" onclick="f1()" id="btn1">
+</body>
+</html>
